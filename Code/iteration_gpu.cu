@@ -156,7 +156,7 @@ __device__ void
           ? LEFT_SIDE
           : RIGHT_SIDE; /* The side of the block's allocation we're on */
   FP_TYPE
-      in_values[2]; /* Holds the values from outside the block's allocation*/
+  in_values[2]; /* Holds the values from outside the block's allocation*/
 
   /* Communicate and read in in_values */
 
