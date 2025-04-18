@@ -5,6 +5,7 @@
 
 #define VEC_WIDTH 8 /* The vector width to use in the average */
 
-int average_rows(const int height, const int width, const int stride, const FP_TYPE *const matrix, FP_TYPE *const averages);
+int average_rows(const int height, const int width, const int stride,
+                 const FP_TYPE* const matrix, FP_TYPE* const averages);
 
 #endif

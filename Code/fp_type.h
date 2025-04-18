@@ -5,9 +5,9 @@
  * compile time.
  * @version 1.0
  * @date 2022-03-05
- * 
- * 
- * 
+ *
+ *
+ *
  */
 
 #ifndef FP_TYPE_H

@@ -8,16 +8,17 @@
 
 #include "device_props.h"
 
-//This way CUDA code doesn't get included when compiling with gcc
+// This way CUDA code doesn't get included when compiling with gcc
 #ifdef __CUDACC__
 #include "utils_gpu.cuh"
 #endif
 
 #ifdef __cplusplus
-extern "C"
-{
+extern "C" {
 #endif
-    int apply_iterations_gpu(const int iterations, const int height, const int width, FP_TYPE *const matrix, const int block_size, float timings[5]);
+int apply_iterations_gpu(const int iterations, const int height,
+                         const int width, FP_TYPE* const matrix,
+                         const int block_size, float timings[5]);
 #ifdef __cplusplus
 }
 #endif

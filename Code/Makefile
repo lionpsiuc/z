@@ -9,29 +9,29 @@ ifeq ($(type),double)
 # ifdef double
 TYPE		:= -DUSE_DOUBLE
 else
-TYPE		:= 
+TYPE		:=
 endif
 
 
 CSTD		:= -std=c11
 # COPT		:= -g
 COPT		:= -O3 -march=native -funroll-loops #-fopenmp
-CWARN		:= -Wextra -Wall 
-CFLAGS		:= $(CWARN) $(COPT) $(DEFINES) $(TYPE) 
+CWARN		:= -Wextra -Wall
+CFLAGS		:= $(CWARN) $(COPT) $(DEFINES) $(TYPE)
 
 NVSTD		:= -Wno-deprecated-gpu-targets
-NVSTD		+= -gencode arch=compute_35,code=sm_35 
+NVSTD		+= -gencode arch=compute_35,code=sm_35
 NVSTD		+= -gencode arch=compute_75,code=sm_75
 # NVOPT		:= -g -G
 NVOPT		:= --use_fast_math -O4
 NVCCFLAGS	:= $(NVSTD) $(NVOPT) --compiler-options="$(CFLAGS)"
 
 LDFLAGS		:= -lm #-lefence
-INCLUDES	:= 
+INCLUDES	:=
 
 EXECS 		:= assignment2
 
-COBJS		:= cl_arguments.o matrix_utils.o timing.o iteration.o average.o 
+COBJS		:= cl_arguments.o matrix_utils.o timing.o iteration.o average.o
 CUOBJS		:= device_props.o average_gpu.o iteration_gpu.o
 OBJS		:= $(COBJS) $(CUOBJS) $(EXECS:=.o)
 
@@ -53,10 +53,10 @@ $(CUOBJS): %.o: %.cu %.d
 	$(NVCC) $(NVCCFLAGS) $(INCLUDES) -c $< -o $@ $(LDFLAGS)
 
 $(CDEPS): %.d: %.c
-	$(CC) $(CSTD) -MM $^ -MF $@ 
+	$(CC) $(CSTD) -MM $^ -MF $@
 
 $(CUDEPS): %.d: %.cu
-	$(NVCC) -MM $^ -MF $@ 	
+	$(NVCC) -MM $^ -MF $@
 
 clean:
 	rm -f $(OBJS)
